@@ -18,7 +18,6 @@ namespace DataAccess
             {
                 string SpName = "dbo.Dish_Get";
                 List<DishData> ListDish = new List<DishData>();
-                DishData Dish = new DishData();
                 using(SqlConnection SqlConn = new SqlConnection())
                 {
                     SqlConn.ConnectionString = SystemConfigurations.EateryConnectionString;
@@ -31,12 +30,12 @@ namespace DataAccess
                         {
                             while (Reader.Read())
                             {
-                                Dish = new DishData();
-                                Dish.DishId = Convert.ToInt32(Reader["DishID"]);
-                                Dish.DishName = Convert.ToString(Reader["Name"]);
-                                Dish.DishType = Convert.ToString(Reader["DishType"]);
-                                Dish.DishPrice = Convert.ToInt32(Reader["Price"]);
-                                ListDish.Add(Dish);
+                                DishData dish = new DishData();
+                                dish.DishID = Convert.ToInt32(Reader["DishID"]);
+                                dish.DishTypeID = Convert.ToInt32(Reader["DishTypeID"]);
+                                dish.DishName = Convert.ToString(Reader["DishName"]);
+                                dish.DishPrice = Convert.ToInt32(Reader["DishPrice"]);
+                                ListDish.Add(dish);
                             }
                         }
                     }
@@ -44,76 +43,80 @@ namespace DataAccess
                 }
                 return ListDish;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
-        public DishData GetDishById(int Id)
+        public DishData GetDishByID(int dishID)
         {
             try
             {
-                string SpName = "dbo.Dish_GetById";
-                DishData Dish = null;
+                string SpName = "dbo.Dish_GetByID";
+                DishData dish = null;
                 using(SqlConnection SqlConn = new SqlConnection())
                 {
                     SqlConn.ConnectionString = SystemConfigurations.EateryConnectionString;
                     SqlConn.Open();
                     SqlCommand SqlCmd = new SqlCommand(SpName, SqlConn);
                     SqlCmd.CommandType = CommandType.StoredProcedure;
-                    SqlCmd.Parameters.Add(new SqlParameter("@ID", Id));
+                    SqlCmd.Parameters.Add(new SqlParameter("@DishID", dishID));
                     using(SqlDataReader Reader = SqlCmd.ExecuteReader())
                     {
                         if (Reader.HasRows)
                         {
                             Reader.Read();
-                            Dish = new DishData();
-                            Dish.DishId = Convert.ToInt32(Reader["DishID"]);
-                            Dish.DishName = Convert.ToString(Reader["Name"]);
-                            Dish.DishType = Convert.ToString(Reader["DishType"]);
-                            Dish.DishPrice = Convert.ToInt32(Reader["Price"]);
+                            dish = new DishData();
+                            dish.DishID = Convert.ToInt32(Reader["DishID"]);
+                            dish.DishTypeID = Convert.ToInt32(Reader["DishTypeID"]);
+                            dish.DishName = Convert.ToString(Reader["DishName"]);
+                            dish.DishPrice = Convert.ToInt32(Reader["DishPrice"]);
                         }
                     }
                     SqlConn.Close();
                 }
-                return Dish;
+                return dish;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
-        public int InsertUpdateDish(DishData Dish, SqlTransaction SqlTran)
+        public int InsertUpdateDish(DishData dish, SqlTransaction SqlTran)
         {
             try
             {
                 string SpName = "dbo.Dish_InsertUpdate";
                 SqlCommand SqlCmd = new SqlCommand(SpName, SqlTran.Connection, SqlTran);
                 SqlCmd.CommandType = CommandType.StoredProcedure;
-                SqlCmd.Parameters.Add(new SqlParameter("@DishID", Dish.DishId));
-                SqlCmd.Parameters.Add(new SqlParameter("@DishName", Dish.DishName));
-                SqlCmd.Parameters.Add(new SqlParameter("@DishType", Dish.DishType));
-                SqlCmd.Parameters.Add(new SqlParameter("@Price", Dish.DishPrice));
+
+                SqlParameter DishId = new SqlParameter("@DishID", dish.DishID);
+                DishId.Direction = ParameterDirection.InputOutput;
+                SqlCmd.Parameters.Add(DishId);
+
+                SqlCmd.Parameters.Add(new SqlParameter("@DishTypeID", dish.DishTypeID));
+                SqlCmd.Parameters.Add(new SqlParameter("@DishName", dish.DishName));
+                SqlCmd.Parameters.Add(new SqlParameter("@DishPrice", dish.DishPrice));
                 return SqlCmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
-        public int DeleteDishes(string Ids,SqlTransaction SqlTran)
+        public int DeleteDishes(string dishIDs,SqlTransaction SqlTran)
         {
             try
             {
                 string SpName = "dbo.Dish_Delete";
                 SqlCommand SqlCmd = new SqlCommand(SpName, SqlTran.Connection, SqlTran);
                 SqlCmd.CommandType = CommandType.StoredProcedure;
-                SqlCmd.Parameters.Add(new SqlParameter("@DishIDs", Ids));
+                SqlCmd.Parameters.Add(new SqlParameter("@DishIDs", dishIDs));
                 return SqlCmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

@@ -17,42 +17,42 @@ namespace BusinessFacade
             {
                 return new DishDB().GetDishList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
-        public DishData GetDishById(int Id)
+        public DishData GetDishByID(int dishID)
         {
             try
             {
-                return new DishDB().GetDishById(Id);
+                return new DishDB().GetDishByID(dishID);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
-        public int InsertUpdateDish(DishData Dish)
+        public int InsertUpdateDish(DishData dish)
         {
             try
             {
-                return new DishRule().InsertUpdateDish(Dish);
+                return new DishRule().InsertUpdateDish(dish);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
-        public int DeleteDishes(string Ids)
+        public int DeleteDishes(IEnumerable<int> dishIDs)
         {
             try
             {
-                return new DishRule().DeleteDishes(Ids);
+                return new DishRule().DeleteDishes(dishIDs);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

@@ -112,7 +112,7 @@
     <Content Include="assets\images\save.png" />
     <Content Include="assets\images\search icon.png" />
     <Content Include="assets\images\view.png" />
-    <Content Include="assets\Stylesheet1.css" />
+    <Content Include="assets\main-stylesheet.css" />
     <Content Include="Dish.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Home.aspx" />
@@ -189,6 +189,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessFacade\BusinessFacade.csproj">
+      <Project>{2C01D2AD-CA5D-4DDB-8B3B-4E4CD62DA723}</Project>
+      <Name>BusinessFacade</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{EE8207AD-5ED6-43BD-A727-FDD68FC5BE57}</Project>
       <Name>Common</Name>

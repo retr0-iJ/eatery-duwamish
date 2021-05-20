@@ -8,23 +8,23 @@ namespace Common.Data
 {
     public class DishData
     {
-        private int _dishId;
-        public int DishId
+        private int _dishID;
+        public int DishID
         {
-            get { return _dishId; }
-            set { _dishId = value; }
+            get { return _dishID; }
+            set { _dishID = value; }
+        }
+        private int _dishTypeID;
+        public int DishTypeID
+        {
+            get { return _dishTypeID; }
+            set { _dishTypeID = value; }
         }
         private string _dishName;
         public string DishName
         {
             get { return _dishName; }
             set { _dishName = value; }
-        }
-        private string _dishType;
-        public string DishType
-        {
-            get { return _dishType; }
-            set { _dishType = value; }
         }
         private int _dishPrice;
         public int DishPrice

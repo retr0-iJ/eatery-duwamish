@@ -12,7 +12,7 @@ namespace BusinessRule
 {
     public class DishRule
     {
-        public int InsertUpdateDish(DishData Dish)
+        public int InsertUpdateDish(DishData dish)
         {
             SqlConnection SqlConn = null;
             SqlTransaction SqlTran = null;
@@ -21,36 +21,37 @@ namespace BusinessRule
                 SqlConn = new SqlConnection(SystemConfigurations.EateryConnectionString);
                 SqlConn.Open();
                 SqlTran = SqlConn.BeginTransaction();
-                int Result = new DishDB().InsertUpdateDish(Dish, SqlTran);
+                int rowsAffected = new DishDB().InsertUpdateDish(dish, SqlTran);
                 SqlTran.Commit();
                 SqlConn.Close();
-                return Result;
+                return rowsAffected;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 SqlTran.Rollback();
                 SqlConn.Close();
-                throw;
+                throw ex;
             }
         }
-        public int DeleteDishes(string Ids)
+        public int DeleteDishes(IEnumerable<int> dishIDs)
         {
             SqlConnection SqlConn = null;
             SqlTransaction SqlTran = null;
             try
             {
                 SqlConn = new SqlConnection(SystemConfigurations.EateryConnectionString);
+                SqlConn.Open();
                 SqlTran = SqlConn.BeginTransaction();
-                int Result = new DishDB().DeleteDishes(Ids, SqlTran);
+                int rowsAffected = new DishDB().DeleteDishes(String.Join(",", dishIDs), SqlTran);
                 SqlTran.Commit();
                 SqlConn.Close();
-                return Result;
+                return rowsAffected;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 SqlTran.Rollback();
                 SqlConn.Close();
-                throw;
+                throw ex;
             }
         }
     }
