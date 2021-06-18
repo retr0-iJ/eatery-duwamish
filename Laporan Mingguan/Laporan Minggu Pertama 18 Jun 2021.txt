@@ -1,0 +1,12 @@
+Nama : Immanuel Joseph
+
+Done :
+- ERD model: menggunakan Visual Paradigm
+- Databases (init_query.sql): menambahkan Table dan Stored Procedures (lengkap untuk Recipe dan Ingredient)
+- Business Flow: Common, Business Facade, Business Rule, dan Data Access untuk Recipe dan Ingredient (minus view .aspx)
+
+Kesulitan:
+Untuk pengerjaan teknikal, sejauh ini saya belum menemukan kesulitan yang menghambat saya. Namun, kesulitan yang saya hadapi dalam pengerjaan minggu ini adalah pembagian waktu dengan pengerjaan project kuliah yang sudah mendekati deadline pengumpulan, sehingga menyita banyak perhatian saya.
+
+Next :
+- Membuat view aspx dan aspx.cs untuk Recipe dan Ingredient.
