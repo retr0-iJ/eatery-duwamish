@@ -12,7 +12,7 @@ namespace DataAccess
 {
     public class RecipeDB
     {
-        public List<RecipeData> GetRecipeListByDishID()
+        public List<RecipeData> GetRecipeListByDishID(int dishID)
         {
             try
             {
@@ -24,6 +24,7 @@ namespace DataAccess
                     SqlConn.Open();
                     SqlCommand SqlCmd = new SqlCommand(SpName, SqlConn);
                     SqlCmd.CommandType = CommandType.StoredProcedure;
+                    SqlCmd.Parameters.Add(new SqlParameter("@DishID", dishID));
                     using (SqlDataReader Reader = SqlCmd.ExecuteReader())
                     {
                         if (Reader.HasRows)
