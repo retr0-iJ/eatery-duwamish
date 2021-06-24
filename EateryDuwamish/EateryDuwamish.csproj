@@ -114,6 +114,7 @@
     <Content Include="assets\images\view.png" />
     <Content Include="assets\main-stylesheet.css" />
     <Content Include="Dish.aspx" />
+    <Content Include="Recipe.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Home.aspx" />
     <Content Include="lib\bootstrap-growl\css\animate.min.css" />
@@ -153,6 +154,13 @@
     </Compile>
     <Compile Include="Dish.aspx.designer.cs">
       <DependentUpon>Dish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe.aspx.cs">
+      <DependentUpon>Recipe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recipe.aspx.designer.cs">
+      <DependentUpon>Recipe.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -213,7 +221,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60452</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
