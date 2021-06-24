@@ -122,12 +122,12 @@
                                 <div class="col-lg-6">
                                     <div class="input-price">
                                         <div class="price-prefix">Rp. </div>
-                                        <asp:TextBox ID="txtPrice" CssClass="form-control" runat="server" type="number"
+                                        <asp:TextBox ID="txtDishPrice" CssClass="form-control" runat="server" type="number"
                                              Min="0" Max="999999999"></asp:TextBox>
                                     </div>
                                     <%--Validator--%>
                                     <asp:RequiredFieldValidator ID="rfvPrive" runat="server" ErrorMessage="Please fill this field"
-                                        ControlToValidate="txtPrice" ForeColor="Red"
+                                        ControlToValidate="txtDishPrice" ForeColor="Red"
                                         ValidationGroup="InsertUpdateDish" Display="Dynamic">
                                     </asp:RequiredFieldValidator>
                                     <%--End of Validator--%>
@@ -183,28 +183,36 @@
                                         </th>
                                         <th aria-sort="ascending" style="" colspan="1" rowspan="1" tabindex="0"
                                             class="sorting_asc text-center">
-                                            Price
+                                            Dish Price
+                                        </th>
+                                        <th style="" colspan="1" rowspan="1" tabindex="0"
+                                            class="text-center">
+                                            Toggle
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <tr class="odd" role="row" runat="server" onclick="">
+                            <tr class="odd text-center" role="row" runat="server" onclick="">
                                 <td>
-                                    <div style="text-align: center;">
+                                    <div">
                                         <asp:CheckBox ID="chkChoose" CssClass="checkDelete" runat="server">
                                         </asp:CheckBox>
                                     </div>
                                 </td>
                                 <td>
-                                    <asp:LinkButton ID="lbDishName" runat="server" CommandName="EDIT"></asp:LinkButton>
+                                    <asp:Literal ID="litDishName" runat="server"></asp:Literal>
                                 </td>
                                 <td>
                                     <asp:Literal ID="litDishType" runat="server"></asp:Literal>
                                 </td>
                                 <td>
-                                    <asp:Literal ID="litPrice" runat="server"></asp:Literal>
+                                    <asp:Literal ID="litDishPrice" runat="server"></asp:Literal>
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="lbDishRecipes" runat="server" CommandName="RECIPES">Recipes</asp:LinkButton>
+                                    <asp:LinkButton ID="lbDishEdit" runat="server" CommandName="EDIT">Edit</asp:LinkButton>
                                 </td>
                             </tr>
                         </ItemTemplate>

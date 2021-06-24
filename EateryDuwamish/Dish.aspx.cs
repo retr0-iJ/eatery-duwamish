@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Web.Controls;
 
 namespace EateryDuwamish
 {
@@ -28,14 +29,14 @@ namespace EateryDuwamish
             hdfDishId.Value = dish.DishID.ToString();
             ddlDishType.SelectedValue = dish.DishTypeID.ToString();
             txtDishName.Text = dish.DishName;
-            txtPrice.Text = dish.DishPrice.ToString();
+            txtDishPrice.Text = dish.DishPrice.ToString();
         }
         private void ResetForm()
         {
             hdfDishId.Value = String.Empty;
             txtDishName.Text = String.Empty;
             ddlDishType.SelectedValue = DEFAULT_DDL_VALUE;
-            txtPrice.Text = String.Empty;
+            txtDishPrice.Text = String.Empty;
         }
         private DishData GetFormData()
         {
@@ -43,7 +44,7 @@ namespace EateryDuwamish
             dish.DishID = String.IsNullOrEmpty(hdfDishId.Value) ? 0 : Convert.ToInt32(hdfDishId.Value);
             dish.DishTypeID = Convert.ToInt32(ddlDishType.SelectedValue);
             dish.DishName = txtDishName.Text;
-            dish.DishPrice = Convert.ToInt32(txtPrice.Text);
+            dish.DishPrice = Convert.ToInt32(txtDishPrice.Text);
             return dish;
         }
         private void LoadDishTypeDropdown()
@@ -77,16 +78,20 @@ namespace EateryDuwamish
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 DishData dish = (DishData)e.Item.DataItem;
-                LinkButton lbDishName = (LinkButton)e.Item.FindControl("lbDishName");
+                Literal litDishName = (Literal)e.Item.FindControl("litDishName");
                 Literal litDishType = (Literal)e.Item.FindControl("litDishType");
-                Literal litPrice = (Literal)e.Item.FindControl("litPrice");
+                Literal litDishPrice = (Literal)e.Item.FindControl("litDishPrice");
+                LinkButton lbDishRecipes = (LinkButton)e.Item.FindControl("lbDishRecipes");
+                LinkButton lbDishEdit = (LinkButton)e.Item.FindControl("lbDishEdit");
 
-                lbDishName.Text = dish.DishName;
-                lbDishName.CommandArgument = dish.DishID.ToString();
+                litDishName.Text = dish.DishName;
 
                 DishTypeData DishType = new DishTypeSystem().GetDishTypeByID(dish.DishTypeID);
                 litDishType.Text = DishType.DishTypeName;
-                litPrice.Text = dish.DishPrice.ToString();
+                litDishPrice.Text = dish.DishPrice.ToString();
+
+                lbDishRecipes.CommandArgument = dish.DishID.ToString();
+                lbDishEdit.CommandArgument = dish.DishID.ToString();
 
                 CheckBox chkChoose = (CheckBox)e.Item.FindControl("chkChoose");
                 chkChoose.Attributes.Add("data-value", dish.DishID.ToString());
@@ -96,9 +101,9 @@ namespace EateryDuwamish
         {
             if (e.CommandName == "EDIT")
             {
-                LinkButton lbDishName = (LinkButton)e.Item.FindControl("lbDishName");
+                Literal litDishName = (Literal)e.Item.FindControl("litDishName");
                 Literal litDishType = (Literal)e.Item.FindControl("litDishType");
-                Literal litPrice = (Literal)e.Item.FindControl("litPrice");
+                Literal litDishPrice = (Literal)e.Item.FindControl("litDishPrice");
 
                 int dishID = Convert.ToInt32(e.CommandArgument.ToString());
                 DishData dish = new DishSystem().GetDishByID(dishID);
@@ -109,9 +114,13 @@ namespace EateryDuwamish
                     DishTypeID = dish.DishTypeID,
                     DishPrice = dish.DishPrice
                 });
-                litFormType.Text = $"UBAH: {lbDishName.Text}";
+                litFormType.Text = $"UBAH: {litDishName.Text}";
                 pnlFormDish.Visible = true;
                 txtDishName.Focus();
+            }
+            else if(e.CommandName == "RECIPES")
+            {
+                Response.Redirect("~/Recipe.aspx?dishID=" + HttpUtility.UrlEncode(Rijndael.Encrypt(e.CommandArgument.ToString())));
             }
         }
         #endregion
