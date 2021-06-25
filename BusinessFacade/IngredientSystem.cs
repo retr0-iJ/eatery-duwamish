@@ -11,11 +11,11 @@ namespace BusinessFacade
 {
     public class IngredientSystem
     {
-        public List<IngredientData> GetIngredientListByRecipeID()
+        public List<IngredientData> GetIngredientListByRecipeID(int recipeID)
         {
             try
             {
-                return new IngredientDB().GetIngredientListByRecipeID();
+                return new IngredientDB().GetIngredientListByRecipeID(recipeID);
             }
             catch (Exception ex)
             {
@@ -44,7 +44,7 @@ namespace BusinessFacade
                 throw ex;
             }
         }
-        public int DeleteRecipes(IEnumerable<int> ingredientIDs)
+        public int DeleteIngredients(IEnumerable<int> ingredientIDs)
         {
             try
             {

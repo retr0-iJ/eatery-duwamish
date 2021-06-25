@@ -12,7 +12,7 @@ namespace DataAccess
 {
     public class IngredientDB
     {
-        public List<IngredientData> GetIngredientListByRecipeID()
+        public List<IngredientData> GetIngredientListByRecipeID(int recipeID)
         {
             try
             {
@@ -24,6 +24,7 @@ namespace DataAccess
                     SqlConn.Open();
                     SqlCommand SqlCmd = new SqlCommand(SpName, SqlConn);
                     SqlCmd.CommandType = CommandType.StoredProcedure;
+                    SqlCmd.Parameters.Add(new SqlParameter("@RecipeID", recipeID));
                     using (SqlDataReader Reader = SqlCmd.ExecuteReader())
                     {
                         if (Reader.HasRows)
@@ -98,7 +99,7 @@ namespace DataAccess
 
                 SqlCmd.Parameters.Add(new SqlParameter("@RecipeID", ingredient.RecipeID));
                 SqlCmd.Parameters.Add(new SqlParameter("@IngredientName", ingredient.IngredientName));
-                SqlCmd.Parameters.Add(new SqlParameter("@IngredientDescription", ingredient.IngredientQuantity));
+                SqlCmd.Parameters.Add(new SqlParameter("@IngredientQuantity", ingredient.IngredientQuantity));
                 SqlCmd.Parameters.Add(new SqlParameter("@IngredientUnit", ingredient.IngredientUnit));
                 return SqlCmd.ExecuteNonQuery();
             }
