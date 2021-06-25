@@ -90,8 +90,8 @@
                                         ControlToValidate="txtDishName" ForeColor="Red" 
                                         ValidationGroup="InsertUpdateDish" Display="Dynamic">
                                     </asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="revDishName" runat="server" ErrorMessage="This field has a maximum of 100 characters"
-                                        ControlToValidate="txtDishName" ValidationExpression="^[\s\S]{0,100}$" ForeColor="Red"
+                                    <asp:RegularExpressionValidator ID="revDishName" runat="server" ErrorMessage="This field has a maximum of 200 characters"
+                                        ControlToValidate="txtDishName" ValidationExpression="^[\s\S]{0,200}$" ForeColor="Red"
                                         ValidationGroup="InsertUpdateDish" Display="Dynamic">
                                     </asp:RegularExpressionValidator>
                                     <%--End of Validator--%>
@@ -126,7 +126,7 @@
                                              Min="0" Max="999999999"></asp:TextBox>
                                     </div>
                                     <%--Validator--%>
-                                    <asp:RequiredFieldValidator ID="rfvPrive" runat="server" ErrorMessage="Please fill this field"
+                                    <asp:RequiredFieldValidator ID="rfvDishPrice" runat="server" ErrorMessage="Please fill this field"
                                         ControlToValidate="txtDishPrice" ForeColor="Red"
                                         ValidationGroup="InsertUpdateDish" Display="Dynamic">
                                     </asp:RequiredFieldValidator>
