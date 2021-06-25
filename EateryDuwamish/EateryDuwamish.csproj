@@ -114,6 +114,7 @@
     <Content Include="assets\images\view.png" />
     <Content Include="assets\main-stylesheet.css" />
     <Content Include="Dish.aspx" />
+    <Content Include="Ingredient.aspx" />
     <Content Include="Recipe.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Home.aspx" />
@@ -154,6 +155,13 @@
     </Compile>
     <Compile Include="Dish.aspx.designer.cs">
       <DependentUpon>Dish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ingredient.aspx.cs">
+      <DependentUpon>Ingredient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ingredient.aspx.designer.cs">
+      <DependentUpon>Ingredient.aspx</DependentUpon>
     </Compile>
     <Compile Include="Recipe.aspx.cs">
       <DependentUpon>Recipe.aspx</DependentUpon>
