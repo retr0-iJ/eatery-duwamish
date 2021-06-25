@@ -1,0 +1,13 @@
+Nama : Immanuel Joseph
+
+Done :
+- View recipe (.aspx dan .aspx.cs)
+- View ingredient (.aspx dan .aspx.cs)
+- Link to each view
+
+Kesulitan:
+Tidak ada
+
+Next :
+- Menyempurnakan fitur-fitur yang sudah dibuat
+- Memperbaiki bug apabila ditemukan pada testing berikutnya
