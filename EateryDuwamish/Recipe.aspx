@@ -64,7 +64,12 @@
                 });
             </script>
             <uc1:NotificationControl ID="notifRecipe" runat="server" />
-            <div class="page-title">Recipes</div><hr style="margin:0"/>
+            <div class="page-title">RECIPES</div><br />
+            <div class="page-title" style="display:flex; justify-content:space-between; color:#555555;">
+                <div><asp:Literal ID="litDishName" runat="server"></asp:Literal></div>
+                <div><asp:Literal ID="litDishType" runat="server"></asp:Literal></div>
+            </div>
+            <hr style="margin:0"/>
             <%--FORM DISH RECIPE--%>
             <asp:Panel runat="server" ID="pnlFormRecipe" Visible="false">
                 <div class="form-slip">
@@ -115,9 +120,6 @@
 
             <div class="row">
                 <div class="table-header">
-                    <div class="table-header-title">
-                        <asp:Literal ID="litDishName" runat="server"></asp:Literal> 
-                    </div>
                     <div class="table-header-button">
                         <asp:Button ID="btnAdd" runat="server" Text="ADD" CssClass="btn btn-primary" Width="100px"
                             OnClick="btnAdd_Click" />

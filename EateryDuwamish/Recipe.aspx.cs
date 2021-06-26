@@ -32,6 +32,7 @@ namespace EateryDuwamish
                 dishID = Convert.ToInt32(Rijndael.Decrypt(Request.QueryString["dishID"]));
 
                 ShowNotificationIfExists();
+                LoadPageTitle();
                 LoadRecipeTable();
             }
         }
@@ -49,6 +50,16 @@ namespace EateryDuwamish
             recipe.RecipeName = txtRecipeName.Text;
             recipe.RecipeDescription = String.Empty;
             return recipe;
+        }
+        #endregion
+
+        #region PAGE TITLE MANAGEMENT
+        private void LoadPageTitle()
+        {
+            DishData dish = new DishSystem().GetDishByID(dishID);
+            DishTypeData dishType = new DishTypeSystem().GetDishTypeByID(dish.DishTypeID);
+            litDishName.Text = dish.DishName;
+            litDishType.Text = dishType.DishTypeName;
         }
         #endregion
 

@@ -31,6 +31,24 @@ namespace EateryDuwamish {
         protected global::EateryDuwamish.UserControl.NotificationControl notifRecipe;
         
         /// <summary>
+        /// litDishName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litDishName;
+        
+        /// <summary>
+        /// litDishType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litDishType;
+        
+        /// <summary>
         /// pnlFormRecipe control.
         /// </summary>
         /// <remarks>
@@ -92,15 +110,6 @@ namespace EateryDuwamish {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSave;
-        
-        /// <summary>
-        /// litDishName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litDishName;
         
         /// <summary>
         /// btnAdd control.
