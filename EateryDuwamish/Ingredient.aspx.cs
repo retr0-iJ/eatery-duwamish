@@ -32,6 +32,7 @@ namespace EateryDuwamish
                 recipeID = Convert.ToInt32(Rijndael.Decrypt(Request.QueryString["recipeID"]));
 
                 ShowNotificationIfExists();
+                LoadRecipeInformation();
                 LoadIngredientTable();
             }
         }
@@ -59,6 +60,18 @@ namespace EateryDuwamish
             ingredient.IngredientQuantity = Convert.ToInt32(txtIngredientQuantity.Text);
             ingredient.IngredientUnit = txtIngredientUnit.Text;
             return ingredient;
+        }
+        #endregion
+
+        #region RECIPE INFORMATION MANAGEMENT
+        private void LoadRecipeInformation()
+        {
+            RecipeData recipe = new RecipeSystem().GetRecipeByID(recipeID);
+            /* PAGE TITLE MANAGEMENT*/
+            litRecipeName.Text = recipe.RecipeName;
+            /* RECIPE DESCRIPTION TEXTBOX MANAGEMENT*/
+            txtRecipeDescription.Text = recipe.RecipeDescription;
+            txtRecipeDescription.Attributes.Add("readonly", "readonly");
         }
         #endregion
 
@@ -159,6 +172,25 @@ namespace EateryDuwamish
             catch (Exception ex)
             {
                 notifIngredient.Show($"ERROR DELETE DATA: {ex.Message}", NotificationType.Danger);
+            }
+        }
+        protected void btnSaveRecipeDescription_Click(object sender, EventArgs e)
+        { 
+            try
+            {
+                string recipeDescription = txtRecipeDescription.Text;
+
+                RecipeData recipe = new RecipeSystem().GetRecipeByID(recipeID);
+                recipe.RecipeDescription = recipeDescription;
+                int rowAffected = new RecipeSystem().InsertUpdateRecipe(recipe);
+                if (rowAffected <= 0)
+                    throw new Exception("No Data Recorded");
+                Session["save-success"] = 1;
+                Response.Redirect("Ingredient.aspx?recipeID=" + HttpUtility.UrlEncode(Rijndael.Encrypt(recipeID.ToString())));
+            }
+            catch (Exception ex)
+            {
+                notifIngredient.Show($"ERROR SAVE DATA: {ex.Message}", NotificationType.Danger);
             }
         }
         #endregion

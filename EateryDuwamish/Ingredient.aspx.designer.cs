@@ -31,6 +31,15 @@ namespace EateryDuwamish {
         protected global::EateryDuwamish.UserControl.NotificationControl notifIngredient;
         
         /// <summary>
+        /// litRecipeName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litRecipeName;
+        
+        /// <summary>
         /// pnlFormIngredient control.
         /// </summary>
         /// <remarks>
@@ -173,5 +182,32 @@ namespace EateryDuwamish {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptIngredient;
+        
+        /// <summary>
+        /// txtRecipeDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRecipeDescription;
+        
+        /// <summary>
+        /// btnEditRecipeDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditRecipeDescription;
+        
+        /// <summary>
+        /// btnSaveRecipeDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveRecipeDescription;
     }
 }

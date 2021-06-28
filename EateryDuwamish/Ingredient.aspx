@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Ingredient.aspx.cs" Inherits="EateryDuwamish.Ingredient" %>
+﻿<%@ Page Title="Ingredient" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Ingredient.aspx.cs" Inherits="EateryDuwamish.Ingredient" %>
 <%@ Register Src="~/UserControl/NotificationControl.ascx" TagName="NotificationControl" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <%--Datatable Configuration--%>
@@ -12,7 +12,7 @@
                 table = $('#htblIngredient').DataTable({
                     stateSave: false,
                     order: [[1, "asc"]],
-                    columnDefs: [{ orderable: false, targets: [0] }]
+                    columnDefs: [{ orderable: false, targets: [0,-1] }]
                 });
             }
             return table;
@@ -42,11 +42,20 @@
             });
         }
     </script>
+    <%--Button Configuration--%>
+    <script type="text/javascript">
+        function ConfigureButton() {
+            $('#<%=btnEditRecipeDescription.ClientID%>').click(function () {
+                $('#<%=txtRecipeDescription.ClientID%>').removeAttr("readonly");
+            })
+        }
+    </script>
     <%--Main Configuration--%>
     <script type="text/javascript">
         function ConfigureElements() {
             ConfigureDatatable();
             ConfigureCheckboxEvent();
+            ConfigureButton();
         }
     </script>
 </asp:Content>
@@ -64,7 +73,9 @@
                 });
             </script>
             <uc1:NotificationControl ID="notifIngredient" runat="server" />
-            <div class="page-title">Master Dish</div><hr style="margin:0"/>
+            <div class="page-title">
+                <asp:Literal ID="litRecipeName" runat="server"></asp:Literal>
+            </div><hr style="margin:0"/>
             <%--FORM INGREDIENT--%>
             <asp:Panel runat="server" ID="pnlFormIngredient" Visible="false">
                 <div class="form-slip">
@@ -150,10 +161,11 @@
             </asp:Panel>
             <%--END OF FORM INGREDIENT--%>
 
+            <%--DATA TABLE INGREDIENT--%>
             <div class="row">
                 <div class="table-header">
                     <div class="table-header-title">
-                        INGREDIENTS
+                        Ingredients
                     </div>
                     <div class="table-header-button">
                         <asp:Button ID="btnAdd" runat="server" Text="ADD" CssClass="btn btn-primary" Width="100px"
@@ -223,6 +235,29 @@
                     </asp:Repeater>
                 </div>
             </div>
+            <%--END OF DATA TABLE INGREDIENT--%>
+
+            <%--FORM RECIPE DESCRIPTION--%>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <div class="control-label table-header-title">
+                        Recipe Description
+                    </div>
+                    <div>
+                        <asp:TextBox ID="txtRecipeDescription" CssClass="form-control" style="resize: vertical" 
+                            TextMode="MultiLine" Rows="10" runat="server"></asp:TextBox>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="display:flex; justify-content:flex-end; margin-bottom: 5vh;">
+                    <asp:Button ID="btnEditRecipeDescription" runat="server" Text="EDIT" CssClass="btn btn-light" Width="100px" 
+                    OnClientClick="return false;"  />
+                    <asp:Button ID="btnSaveRecipeDescription" runat="server" Text="SAVE" CssClass="btn btn-primary" Width="100px"
+                    OnClick="btnSaveRecipeDescription_Click" />
+                </div>
+            </div>
+            <%--END OF FORM RECIPE DESCRIPTION--%>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
