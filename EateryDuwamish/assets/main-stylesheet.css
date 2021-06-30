@@ -5,11 +5,12 @@
 #main-container{
     margin: 30px
 }
-footer{
-    position: fixed;
-    bottom: 0;
-    padding: 0 30px;
-    width: 100%;
+.nav-logo{
+    width: 150px !important; 
+    background-color: black !important; 
+    color: white !important; 
+    font-weight: bold; 
+    text-align: center;
 }
 .page-title{
     font-weight: bold;
