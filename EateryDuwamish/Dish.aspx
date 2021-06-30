@@ -12,7 +12,7 @@
                 table = $('#htblDish').DataTable({
                     stateSave: false,
                     order: [[1, "asc"]],
-                    columnDefs: [{ orderable: false, targets: [0] }]
+                    columnDefs: [{ orderable: false, targets: [0,-1] }]
                 });
             }
             return table;
