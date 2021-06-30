@@ -74,7 +74,9 @@
             </script>
             <uc1:NotificationControl ID="notifIngredient" runat="server" />
             <div class="page-title">
-                <asp:Literal ID="litRecipeName" runat="server"></asp:Literal>
+                <asp:HyperLink ID="hlRecipe" class="page-title-hyperlink btn-icon-previous" runat="server">
+                    <asp:Literal ID="litRecipeName" runat="server"></asp:Literal>
+                </asp:HyperLink>
             </div><hr style="margin:0"/>
             <%--FORM INGREDIENT--%>
             <asp:Panel runat="server" ID="pnlFormIngredient" Visible="false">

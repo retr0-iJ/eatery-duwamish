@@ -15,6 +15,12 @@ footer{
     font-weight: bold;
     font-size: 24px;
 }
+.page-title-hyperlink{
+    color: #555555 !important;
+}
+a.page-title-hyperlink:hover{
+    color: #555555 !important;
+}
 .table-header{
     margin: 10px 15px 10px 15px;
     overflow:hidden
@@ -55,4 +61,9 @@ footer{
 }
 .input-price input{
     padding-left:35px
+}
+.btn-icon-previous, .btn-icon-previous:active{
+    background: url("../assets/images/previous.png") left center no-repeat;
+    background-size: 15px 15px;
+    padding-left: 20px;
 }

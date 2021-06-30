@@ -12,7 +12,7 @@
                 table = $('#htblRecipe').DataTable({
                     stateSave: false,
                     order: [[1, "asc"]],
-                    columnDefs: [{ orderable: false, targets: [0] }]
+                    columnDefs: [{ orderable: false, targets: [0,-1] }]
                 });
             }
             return table;
@@ -66,7 +66,11 @@
             <uc1:NotificationControl ID="notifRecipe" runat="server" />
             <div class="page-title">RECIPES</div><br />
             <div class="page-title" style="display:flex; justify-content:space-between; color:#555555;">
-                <div><asp:Literal ID="litDishName" runat="server"></asp:Literal></div>
+                <div>                    
+                    <asp:HyperLink ID="hlDish" class="page-title-hyperlink btn-icon-previous" NavigateUrl="~/Dish.aspx" runat="server">
+                        <asp:Literal ID="litDishName" runat="server"></asp:Literal>
+                    </asp:HyperLink>
+                </div>
                 <div><asp:Literal ID="litDishType" runat="server"></asp:Literal></div>
             </div>
             <hr style="margin:0"/>

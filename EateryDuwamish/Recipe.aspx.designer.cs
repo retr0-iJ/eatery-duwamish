@@ -31,6 +31,15 @@ namespace EateryDuwamish {
         protected global::EateryDuwamish.UserControl.NotificationControl notifRecipe;
         
         /// <summary>
+        /// hlDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlDish;
+        
+        /// <summary>
         /// litDishName control.
         /// </summary>
         /// <remarks>

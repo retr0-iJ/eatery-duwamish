@@ -69,6 +69,8 @@ namespace EateryDuwamish
             RecipeData recipe = new RecipeSystem().GetRecipeByID(recipeID);
             /* PAGE TITLE MANAGEMENT*/
             litRecipeName.Text = recipe.RecipeName;
+            /* HYPERLINK TO RECIPE PAGE MANAGEMENT*/
+            hlRecipe.NavigateUrl = "~/Recipe.aspx?dishID="+ HttpUtility.UrlEncode(Rijndael.Encrypt(recipe.DishID.ToString()));
             /* RECIPE DESCRIPTION TEXTBOX MANAGEMENT*/
             txtRecipeDescription.Text = recipe.RecipeDescription;
             txtRecipeDescription.Attributes.Add("readonly", "readonly");
