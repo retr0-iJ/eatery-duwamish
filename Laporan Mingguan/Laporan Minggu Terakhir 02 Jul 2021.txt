@@ -1,0 +1,12 @@
+Nama : Immanuel Joseph
+
+Done :
+- Insert/Update Recipe Description (textarea) feature at Ingredient view
+- Back to previous page hyperlink (Recipe and Ingredient view)
+- Memperbaiki error-error yang ditemukan
+
+Kesulitan:
+Tidak ada.
+
+Next :
+--
