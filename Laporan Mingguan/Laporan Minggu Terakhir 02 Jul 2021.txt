@@ -4,9 +4,13 @@ Done :
 - Insert/Update Recipe Description (textarea) feature at Ingredient view
 - Back to previous page hyperlink (Recipe and Ingredient view)
 - Memperbaiki error-error yang ditemukan
+- Seluruh Fitur sesuai prototype.
 
 Kesulitan:
 Tidak ada.
 
 Next :
 --
+
+Waktu Penyelesaian Semua Fitur : 
+Rabu, 30 Juni 2021, 16:48
